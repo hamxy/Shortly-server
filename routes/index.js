@@ -1,17 +1,15 @@
-import express from 'express';
+import express from "express";
 let router = express.Router();
 
-import createLinkController from '../controllers/create-link.js';
-
-
+import createLinkController from "../controllers/createLinkController.js";
+import redirectToLink from "../controllers/redirectToLink.js";
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get("/", function (req, res, next) {
   res.send("hello from server");
 });
 
-router.get('/create-link', createLinkController);
-
-router.get('/:link')
+router.post("/create-link", createLinkController);
+router.get("/:short", redirectToLink);
 
 export default router;
